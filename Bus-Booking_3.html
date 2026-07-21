@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RoadMate | Book Your Bus Journey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="#" class="logo">
+      <span class="logo-icon">🚌</span> RoadMate
+    </a>
+    <nav class="main-nav">
+      <a href="#routes">Routes</a>
+      <a href="#why">Why Us</a>
+      <a href="#stops">Stops</a>
+    </nav>
+    <a href="#book" class="btn btn-outline">My Tickets</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow">City to city, on time, every time</span>
+      <h1>Your seat is<br><span class="hl">already waiting.</span></h1>
+      <p class="hero-sub">Compare 400+ operators, lock in the best fare, and get a ticket that fits in your pocket &mdash; not your inbox.</p>
+      <div class="road-divider" aria-hidden="true"></div>
+    </div>
+
+    <!-- Signature element: ticket-stub search card -->
+    <form class="ticket-card" id="book">
+      <div class="ticket-row ticket-cities">
+        <div class="field">
+          <label for="from">FROM</label>
+          <input type="text" id="from" placeholder="Chennai" value="Chennai">
+        </div>
+        <div class="swap" title="Swap cities">⇄</div>
+        <div class="field">
+          <label for="to">TO</label>
+          <input type="text" id="to" placeholder="Bengaluru" value="Bengaluru">
+        </div>
+      </div>
+
+      <div class="ticket-perforation" aria-hidden="true"></div>
+
+      <div class="ticket-row ticket-details">
+        <div class="field">
+          <label for="date">DATE OF JOURNEY</label>
+          <input type="date" id="date">
+        </div>
+        <div class="field small">
+          <label for="pax">PASSENGERS</label>
+          <select id="pax">
+            <option>1</option>
+            <option selected>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">Search Buses</button>
+      <p class="ticket-footnote">No booking fees &middot; Free cancellation up to 6 hrs before departure</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<section class="strip">
+  <div class="wrap strip-inner">
+    <div class="strip-item"><strong>12,400+</strong><span>daily trips</span></div>
+    <div class="strip-item"><strong>400+</strong><span>bus operators</span></div>
+    <div class="strip-item"><strong>4.6★</strong><span>average rating</span></div>
+    <div class="strip-item"><strong>2.1M</strong><span>happy travellers</span></div>
+  </div>
+</section>
+
+<!-- ============ POPULAR ROUTES ============ -->
+<section class="routes" id="routes">
+  <div class="wrap">
+    <h2>Popular routes this week</h2>
+    <p class="section-sub">Hand-picked routes with the best availability and fares right now.</p>
+
+    <div class="route-grid">
+
+      <article class="route-card route-teal">
+        <div class="route-top">
+          <span class="route-cities">Chennai <span class="arrow">→</span> Bengaluru</span>
+          <span class="route-tag">Fastest</span>
+        </div>
+        <div class="route-meta">
+          <span>6h 15m</span><span>&bull;</span><span>AC Sleeper</span>
+        </div>
+        <div class="route-bottom">
+          <span class="price">₹699 <small>onwards</small></span>
+          <a href="#book" class="btn btn-small">View seats</a>
+        </div>
+      </article>
+
+      <article class="route-card route-coral">
+        <div class="route-top">
+          <span class="route-cities">Mumbai <span class="arrow">→</span> Pune</span>
+          <span class="route-tag">Most booked</span>
+        </div>
+        <div class="route-meta">
+          <span>3h 30m</span><span>&bull;</span><span>Non-AC Seater</span>
+        </div>
+        <div class="route-bottom">
+          <span class="price">₹349 <small>onwards</small></span>
+          <a href="#book" class="btn btn-small">View seats</a>
+        </div>
+      </article>
+
+      <article class="route-card route-yellow">
+        <div class="route-top">
+          <span class="route-cities">Delhi <span class="arrow">→</span> Jaipur</span>
+          <span class="route-tag">Best value</span>
+        </div>
+        <div class="route-meta">
+          <span>5h 00m</span><span>&bull;</span><span>AC Seater</span>
+        </div>
+        <div class="route-bottom">
+          <span class="price">₹499 <small>onwards</small></span>
+          <a href="#book" class="btn btn-small">View seats</a>
+        </div>
+      </article>
+
+      <article class="route-card route-blue">
+        <div class="route-top">
+          <span class="route-cities">Hyderabad <span class="arrow">→</span> Vijayawada</span>
+          <span class="route-tag">Overnight</span>
+        </div>
+        <div class="route-meta">
+          <span>5h 45m</span><span>&bull;</span><span>AC Sleeper</span>
+        </div>
+        <div class="route-bottom">
+          <span class="price">₹599 <small>onwards</small></span>
+          <a href="#book" class="btn btn-small">View seats</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY US ============ -->
+<section class="why" id="why">
+  <div class="wrap why-inner">
+    <div class="why-card">
+      <div class="why-icon">🎟️</div>
+      <h3>Real-time seat maps</h3>
+      <p>Pick your exact seat &mdash; window, aisle, or upper deck &mdash; before you pay.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔒</div>
+      <h3>Secure payments</h3>
+      <p>Encrypted checkout with instant confirmation sent straight to your phone.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📍</div>
+      <h3>Live tracking</h3>
+      <p>Watch your bus move on the map so you know exactly when to reach the stop.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">↩️</div>
+      <h3>Easy rescheduling</h3>
+      <p>Plans changed? Shift your journey to a new date in a couple of taps.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer" id="stops">
+  <div class="wrap footer-inner">
+    <div>
+      <a href="#" class="logo">🚌 RoadMate</a>
+      <p class="footer-note">Booking buses across 900+ cities since 2018.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About</a>
+      <a href="#">Careers</a>
+      <a href="#">Press</a>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <a href="#">Help Centre</a>
+      <a href="#">Cancellations</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>For Operators</h4>
+      <a href="#">List your fleet</a>
+      <a href="#">Operator login</a>
+    </div>
+  </div>
+  <p class="footer-bottom">© 2026 RoadMate Travels. All routes lead somewhere good.</p>
+</footer>
+
+</body>
+</html>
