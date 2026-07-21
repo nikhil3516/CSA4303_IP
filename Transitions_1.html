@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Transitions &amp; Transformations Demo</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --accent: #38bdf8;
+    --accent2: #f472b6;
+    --accent3: #34d399;
+    --text: #e2e8f0;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e1b4b);
+    color: var(--text);
+    padding: 40px 20px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+  }
+
+  header p {
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  section {
+    max-width: 1100px;
+    margin: 0 auto 60px auto;
+  }
+
+  section h2 {
+    border-left: 5px solid var(--accent);
+    padding-left: 12px;
+    margin-bottom: 25px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    cursor: pointer;
+  }
+
+  .card h3 {
+    margin-top: 0;
+    font-size: 1rem;
+    color: #cbd5e1;
+  }
+
+  .box {
+    width: 90px;
+    height: 90px;
+    margin: 20px auto;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+  }
+
+  /* ---------- TRANSITION EXAMPLES ---------- */
+
+  /* 1. Simple property transition (color + background) */
+  .t-color {
+    transition: background 0.4s ease, transform 0.4s ease;
+  }
+  .t-color:hover {
+    background: linear-gradient(135deg, var(--accent3), var(--accent));
+    transform: translateY(-8px);
+  }
+
+  /* 2. Size transition */
+  .t-size {
+    transition: width 0.5s ease-in-out, height 0.5s ease-in-out, border-radius 0.5s ease;
+  }
+  .card:hover .t-size {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+
+  /* 3. Opacity + shadow transition */
+  .t-fade {
+    transition: opacity 0.6s ease, box-shadow 0.6s ease;
+    opacity: 0.35;
+  }
+  .card:hover .t-fade {
+    opacity: 1;
+    box-shadow: 0 0 25px var(--accent2);
+  }
+
+  /* 4. Multiple property transition with custom timing function */
+  .t-multi {
+    transition: transform 0.5s cubic-bezier(.25,.8,.25,1), background 0.5s ease;
+  }
+  .card:hover .t-multi {
+    transform: rotate(15deg) scale(1.15);
+    background: linear-gradient(135deg, #fbbf24, #f472b6);
+  }
+
+  /* ---------- TRANSFORM EXAMPLES ---------- */
+
+  .tr-translate:hover { transform: translate(15px, -15px); transition: transform 0.4s ease; }
+  .tr-scale:hover      { transform: scale(1.3); transition: transform 0.4s ease; }
+  .tr-rotate:hover     { transform: rotate(45deg); transition: transform 0.4s ease; }
+  .tr-skew:hover       { transform: skew(15deg, 5deg); transition: transform 0.4s ease; }
+  .tr-combo:hover       {
+    transform: translateY(-10px) rotate(10deg) scale(1.1);
+    transition: transform 0.5s ease;
+  }
+
+  footer {
+    text-align: center;
+    color: #64748b;
+    margin-top: 40px;
+    font-size: 0.9rem;
+  }
+
+  code {
+    background: #0b1120;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>CSS Transitions &amp; Transformations</h1>
+  <p>Hover over each card below to see a different <code>transition</code> or <code>transform</code> property in action.</p>
+</header>
+
+<section>
+  <h2>Transitions</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Color &amp; Lift Transition</h3>
+      <div class="box t-color"></div>
+      <p><code>transition: background, transform</code></p>
+    </div>
+
+    <div class="card">
+      <h3>Size Transition</h3>
+      <div class="box t-size"></div>
+      <p><code>transition: width, height, border-radius</code></p>
+    </div>
+
+    <div class="card">
+      <h3>Fade &amp; Glow Transition</h3>
+      <div class="box t-fade"></div>
+      <p><code>transition: opacity, box-shadow</code></p>
+    </div>
+
+    <div class="card">
+      <h3>Custom Easing Transition</h3>
+      <div class="box t-multi"></div>
+      <p><code>cubic-bezier(.25,.8,.25,1)</code></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Transformations</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>translate()</h3>
+      <div class="box tr-translate"></div>
+      <p><code>transform: translate(15px, -15px)</code></p>
+    </div>
+
+    <div class="card">
+      <h3>scale()</h3>
+      <div class="box tr-scale"></div>
+      <p><code>transform: scale(1.3)</code></p>
+    </div>
+
+    <div class="card">
+      <h3>rotate()</h3>
+      <div class="box tr-rotate"></div>
+      <p><code>transform: rotate(45deg)</code></p>
+    </div>
+
+    <div class="card">
+      <h3>skew()</h3>
+      <div class="box tr-skew"></div>
+      <p><code>transform: skew(15deg, 5deg)</code></p>
+    </div>
+
+    <div class="card">
+      <h3>Combined Transform</h3>
+      <div class="box tr-combo"></div>
+      <p><code>translateY() rotate() scale()</code></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Tip: <code>transition</code> defines <em>how</em> a property change animates; <code>transform</code> defines <em>what</em> visual change happens (move, scale, rotate, skew).</p>
+</footer>
+
+</body>
+</html>
