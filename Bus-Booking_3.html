@@ -207,3 +207,367 @@
 
 </body>
 </html>
+
+
+/* =========================================================
+   RoadMate — Bus Reservation Homepage
+   Token system:
+   Colors : --ink #14213D, --cream #FFF8ED, --yellow #FFB800,
+            --coral #FF6B4A, --teal #2EC4B6, --blue #1B4B66
+   Type   : Poppins (display), Inter (body), JetBrains Mono (data)
+========================================================== */
+
+:root {
+  --ink:    #14213D;
+  --cream:  #FFF8ED;
+  --yellow: #FFB800;
+  --coral:  #FF6B4A;
+  --teal:   #2EC4B6;
+  --blue:   #1B4B66;
+  --white:  #ffffff;
+
+  --radius: 18px;
+  --shadow: 0 10px 30px rgba(20, 33, 61, 0.12);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+}
+
+h1, h2, h3, .logo {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+.wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.btn-primary {
+  background: var(--coral);
+  color: var(--white);
+  box-shadow: 0 8px 20px rgba(255, 107, 74, 0.35);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(255, 107, 74, 0.45); }
+.btn-outline {
+  border: 2px solid var(--ink);
+  padding: 10px 20px;
+}
+.btn-outline:hover { background: var(--ink); color: var(--white); }
+.btn-small {
+  background: var(--ink);
+  color: var(--white);
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}
+.btn-small:hover { background: var(--coral); }
+.btn-block { width: 100%; text-align: center; font-size: 1.05rem; }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 248, 237, 0.9);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(20,33,61,0.08);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.logo {
+  font-weight: 700;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.main-nav { display: flex; gap: 32px; font-weight: 500; }
+.main-nav a { position: relative; }
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 0; height: 2px;
+  background: var(--coral);
+  transition: width 0.25s ease;
+}
+.main-nav a:hover::after { width: 100%; }
+
+/* ---------- Hero ---------- */
+.hero {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,184,0,0.18), transparent 45%),
+    radial-gradient(circle at 85% 10%, rgba(46,196,182,0.16), transparent 40%);
+  padding: 70px 0 90px;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 50px;
+  align-items: start;
+}
+.eyebrow {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  background: var(--yellow);
+  color: var(--ink);
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-bottom: 22px;
+}
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+.hero h1 .hl { color: var(--coral); }
+.hero-sub {
+  max-width: 440px;
+  margin-top: 20px;
+  font-size: 1.05rem;
+  color: #45526e;
+}
+
+/* Dashed road divider — nods to a highway lane marking */
+.road-divider {
+  margin-top: 40px;
+  height: 6px;
+  width: 220px;
+  border-radius: 3px;
+  background-image: repeating-linear-gradient(
+    to right, var(--blue) 0, var(--blue) 22px, transparent 22px, transparent 38px
+  );
+}
+
+/* ---------- Signature element: ticket-stub search card ---------- */
+.ticket-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 30px 30px 26px;
+  position: relative;
+}
+/* punched circles to sell the "ticket" illusion */
+.ticket-card::before,
+.ticket-card::after {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background: var(--cream);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ticket-card::before { left: -13px; }
+.ticket-card::after  { right: -13px; }
+
+.ticket-row { display: flex; gap: 18px; }
+.ticket-cities { align-items: flex-end; }
+.field { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.field.small { flex: 0 0 110px; }
+.field label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: #8a93a8;
+}
+.field input, .field select {
+  border: none;
+  border-bottom: 2px solid #e7e1d4;
+  padding: 8px 2px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--ink);
+  background: transparent;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.field input:focus, .field select:focus { border-color: var(--coral); }
+
+.swap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 2px solid #e7e1d4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.swap:hover { transform: rotate(180deg); background: var(--yellow); }
+
+.ticket-perforation {
+  height: 0;
+  border-top: 2px dashed #e7e1d4;
+  margin: 24px 0;
+}
+
+.ticket-details { margin-bottom: 22px; }
+
+.ticket-footnote {
+  text-align: center;
+  font-size: 0.78rem;
+  color: #8a93a8;
+  margin: 14px 0 0;
+}
+
+/* ---------- Trust strip ---------- */
+.strip { background: var(--ink); }
+.strip-inner {
+  display: flex;
+  justify-content: space-between;
+  padding: 26px 24px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.strip-item { color: var(--white); text-align: center; flex: 1; min-width: 120px; }
+.strip-item strong {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  color: var(--yellow);
+}
+.strip-item span { font-size: 0.82rem; color: #c7cede; }
+
+/* ---------- Routes ---------- */
+.routes { padding: 80px 0; }
+.routes h2 { font-size: 2rem; font-weight: 700; }
+.section-sub { color: #5b6787; margin: 10px 0 40px; max-width: 480px; }
+
+.route-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+.route-card {
+  border-radius: var(--radius);
+  padding: 24px;
+  color: var(--white);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.route-card:hover { transform: translateY(-6px); box-shadow: 0 16px 34px rgba(20,33,61,0.2); }
+
+.route-teal   { background: linear-gradient(150deg, var(--teal), #1f9a8f); }
+.route-coral  { background: linear-gradient(150deg, var(--coral), #e0492e); }
+.route-yellow { background: linear-gradient(150deg, #ffcc33, var(--yellow)); color: var(--ink); }
+.route-blue   { background: linear-gradient(150deg, var(--blue), #0d2c3f); }
+
+.route-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.route-cities { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.05rem; }
+.arrow { opacity: 0.8; }
+.route-tag {
+  font-size: 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(255,255,255,0.25);
+  padding: 4px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.route-yellow .route-tag { background: rgba(20,33,61,0.15); }
+
+.route-meta {
+  display: flex;
+  gap: 8px;
+  font-size: 0.82rem;
+  opacity: 0.9;
+  margin: 14px 0 26px;
+}
+
+.route-bottom { display: flex; align-items: center; justify-content: space-between; }
+.price { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.15rem; }
+.price small { font-weight: 400; font-size: 0.7rem; opacity: 0.8; }
+.route-bottom .btn-small { background: rgba(255,255,255,0.2); }
+.route-yellow .btn-small { background: rgba(20,33,61,0.85); color: var(--white); }
+.route-bottom .btn-small:hover { background: var(--white); color: var(--ink); }
+
+/* ---------- Why us ---------- */
+.why { background: var(--white); padding: 80px 0; }
+.why-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 26px;
+}
+.why-card {
+  background: var(--cream);
+  border-radius: var(--radius);
+  padding: 28px 22px;
+  transition: transform 0.25s ease;
+}
+.why-card:hover { transform: translateY(-4px); }
+.why-icon { font-size: 1.8rem; margin-bottom: 12px; }
+.why-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.why-card p { font-size: 0.9rem; color: #5b6787; margin: 0; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--ink); color: #cfd6e6; padding: 60px 0 20px; }
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.footer-inner .logo { color: var(--white); }
+.footer-note { font-size: 0.85rem; margin-top: 12px; max-width: 220px; }
+.footer-col h4 { font-family: 'Poppins', sans-serif; color: var(--white); font-size: 0.9rem; margin-bottom: 12px; }
+.footer-col a { display: block; font-size: 0.88rem; margin-bottom: 8px; color: #b7c0d6; }
+.footer-col a:hover { color: var(--yellow); }
+.footer-bottom { text-align: center; font-size: 0.8rem; color: #8b96b3; padding-top: 20px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 880px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2.3rem; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .main-nav { display: none; }
+  .ticket-row { flex-direction: column; }
+  .swap { align-self: center; }
+  .footer-inner { grid-template-columns: 1fr; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
